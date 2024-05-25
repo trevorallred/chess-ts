@@ -3,9 +3,11 @@ export type GameState = {
   selectedPiece?: Piece;
   pieces: Piece[];
   select: (position: Position, piece?: Piece) => boolean;
+  canMoveTo: (position: Position) => boolean;
 };
 
 export type Piece = {
+  id: number;
   color: PieceColor;
   type: PieceType;
   position: Position;
@@ -20,4 +22,3 @@ export type Position = {
   row: PositionCells;
 };
 export type PositionCells = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-export const positionCells: PositionCells[] = [1, 2, 3, 4, 5, 6, 7, 8];

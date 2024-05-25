@@ -1,16 +1,19 @@
-import {GameState, positionCells} from "./types.ts";
+import { GameState, PositionCells } from "./types.ts";
 import Cell from "./Cell.tsx";
 
-export default function Board({game}: {game: GameState}) {
+const files: PositionCells[] = [1, 2, 3, 4, 5, 6, 7, 8];
+const rows: PositionCells[] = [...files].reverse();
+
+export default function Board({ game }: { game: GameState }) {
   return (
-    <table>
-      {positionCells.map((row) => (
-        <tr>
-          {positionCells.map((file) => (
-            <Cell position={{ row, file }} game={game} />
+    <div>
+      {rows.map((row) => (
+        <div key={row} style={{ display: "flex" }}>
+          {files.map((file) => (
+            <Cell key={file} position={{ row, file }} game={game} />
           ))}
-        </tr>
+        </div>
       ))}
-    </table>
+    </div>
   );
 }
