@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import Board from "./Board.tsx";
 import { useGame } from "./game.ts";
 

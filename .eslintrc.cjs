@@ -12,5 +12,6 @@ module.exports = {
   plugins: ["@typescript-eslint", "react-refresh", "prettier"],
   rules: {
     "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+    "@typescript-eslint/no-unused-vars": "off",
   },
 };
