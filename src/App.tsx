@@ -1,6 +1,6 @@
 import React from "react";
 import Board from "./Board.tsx";
-import { useGame } from "./game.ts";
+import { useGame } from "./game";
 
 function App() {
   const game = useGame();

@@ -1,5 +1,5 @@
 export type GameState = {
-  turn: "white" | "black";
+  turn: PieceColor;
   selectedPiece?: Piece;
   pieces: Piece[];
   select: (position: Position, piece?: Piece) => boolean;
@@ -7,7 +7,6 @@ export type GameState = {
 };
 
 export type Piece = {
-  id: number;
   color: PieceColor;
   type: PieceType;
   position: Position;
@@ -22,3 +21,6 @@ export type Position = {
   row: PositionCells;
 };
 export type PositionCells = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+
+export type FileString = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h";
+export type SquareString = `${FileString}${PositionCells}`;
