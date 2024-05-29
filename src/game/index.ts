@@ -6,7 +6,7 @@ export function useGame(boardString?: string): GameState {
   const [selectedPiece, setSelectedPiece] = useState<Piece | undefined>();
   const [turn, setTurn] = useState<"white" | "black">("white");
 
-  const possibilities = new Map<Piece, Possibility[]>();
+  // const possibilities = new Map<Piece, Possibility[]>();
 
   function select(position: Position, piece?: Piece): boolean {
     // console.log("select", position);
@@ -117,7 +117,7 @@ function isDiagonal(p1: Position, p2: Position): boolean {
 
 function equalsPiece(p1?: Piece, p2?: Piece): boolean {
   if (!p1 || !p2) return false;
-  return p1.id === p2.id;
+  return p1.color === p2.color && p1.type === p2.type && equalsPosition(p1.position, p2.position);
 }
 
 function equalsPosition(p1?: Position, p2?: Position): boolean {
@@ -147,7 +147,6 @@ function initializePieces(boardString = DEFAULT_BOARD): Piece[] {
 
 function buildPiece(piece: string, position: Position): Piece {
   return {
-    id: Math.ceil(Math.random() * 1000),
     color: piece === piece.toUpperCase() ? "white" : "black",
     type: toPieceType(piece),
     position,
