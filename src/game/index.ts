@@ -6,19 +6,13 @@ export function useGame(boardString?: string): GameState {
   const [selectedPiece, setSelectedPiece] = useState<Piece | undefined>();
   const [turn, setTurn] = useState<"white" | "black">("white");
 
-  // const possibilities = new Map<Piece, Possibility[]>();
-
   function select(position: Position, piece?: Piece): boolean {
-    // console.log("select", position);
     if (selectedPiece) {
-      // console.log("is selected", selectedPiece);
       if (equalsPiece(selectedPiece, piece)) {
-        // console.log("deselect current piece");
         setSelectedPiece(undefined);
         return true;
       }
       if (selectedPiece.color === piece?.color) {
-        // console.log("switch selected piece");
         setSelectedPiece(piece);
         return true;
       }
@@ -33,7 +27,7 @@ export function useGame(boardString?: string): GameState {
         setTurn(turn === "white" ? "black" : "white");
         return true;
       }
-      console.log("Invalid move", selectedPiece, "to", position);
+      console.warn("Invalid move", selectedPiece, "to", position);
       return false;
     }
     if (piece && piece.color === turn) {
