@@ -1,6 +1,6 @@
 import { buildPossibilities, Move, Possibilities } from "./possibilities.ts";
 import { Piece } from "../types.ts";
-import { buildPosition } from "./util.ts";
+import { buildPosition } from "./build.ts";
 
 describe("buildPossibilities", () => {
   test("no next moves", () => {

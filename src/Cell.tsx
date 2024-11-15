@@ -1,4 +1,5 @@
 import { GameState, Piece, PieceType, Position } from "./types.ts";
+import { equalsPosition } from "./game/util.ts";
 
 type Props = {
   position: Position;
@@ -19,7 +20,7 @@ export default function Cell({ game, position }: Props) {
     if (isSelected) {
       return "#79C";
     }
-    if (game.canMoveTo(position)) {
+    if (game.moves.find((m) => equalsPosition(m, piece?.position))) {
       return "#9CC";
     }
     return isLight ? LIGHT : DARK;

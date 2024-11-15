@@ -1,24 +1,4 @@
-import { Piece, PieceColor, Position, PositionCells, SquareString } from "../types.ts";
-
-export function buildPosition(name: SquareString): Position {
-  const file = fromFileString(name[0]);
-  return {
-    row: parseInt(name[1]) as PositionCells,
-    file,
-  };
-}
-
-const files = ["", "a", "b", "c", "d", "e", "f", "g", "h"];
-export function fromFileString(fileString: string): PositionCells {
-  const index = files.indexOf(fileString);
-  return parsePositionCell(index);
-}
-
-function parsePositionCell(index: number): PositionCells {
-  if (index > 0 && index <= 8) return index as PositionCells;
-  console.warn("Invalid index string", index);
-  throw new Error("Invalid index or col: " + index);
-}
+import { Piece, PieceColor, Position } from "../types.ts";
 
 export function split<T>(list: T[], test: (t: T) => boolean): { yes: T[]; no: T[] } {
   const yes: T[] = [];
@@ -36,4 +16,15 @@ export function isKing(piece: Piece): boolean {
 
 export function nextTurn(turn: PieceColor): PieceColor {
   return turn === "white" ? "black" : "white";
+}
+
+export function equalsPiece(p1?: Piece, p2?: Piece): boolean {
+  if (!p1) return false;
+  if (!p2) return false;
+  return p1.color === p2.color && p1.type === p2.type && equalsPosition(p1.position, p2.position);
+}
+
+export function equalsPosition(p1?: Position, p2?: Position): boolean {
+  if (!p1 || !p2) return false;
+  return p1.row === p2.row && p1.file === p2.file;
 }

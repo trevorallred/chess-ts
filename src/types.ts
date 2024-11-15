@@ -3,7 +3,7 @@ export type GameState = {
   selectedPiece?: Piece;
   pieces: Piece[];
   select: (position: Position, piece?: Piece) => boolean;
-  canMoveTo: (position: Position) => boolean;
+  moves: Position[];
 };
 
 export type Piece = {
